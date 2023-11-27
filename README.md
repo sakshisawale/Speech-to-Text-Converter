@@ -41,8 +41,6 @@ Japanese
 ## Contributing
 If you encounter any issues or have suggestions for improvements, please open an issue on the GitHub repository. Contributions are welcome!
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
 Feel free to customize this README file to better fit your project's specifics. Additionally, you may want to include a license file (`LICENSE`) in your repository and create a `requirements.txt` file with the dependencies if you don't have one already.
 
 
