@@ -5,7 +5,7 @@ from googletrans import Translator
 from tkinter import messagebox
 
 # Define supported languages
-languages = ["en-US", "hi", "mr", "ta", "te", "ko", "fr", "de", "ja"]
+languages = ["English", "Hindi", "Marathi", "Tamil", "Telugu", "Korean", "French",  "Japanese"]
 
 # Replace this placeholder with the actual calligraphy generator
 # Replace this with your actual calligraphy generation logic
@@ -37,11 +37,12 @@ def record_audio(language='en-US'):  # Default to English (United States)
 
     try:
         text = r.recognize_google(audio, language=language)
+        current_text = output_text.get("1.0", tk.END)
         output_text.config(state=tk.NORMAL)
         output_text.delete(1.0, tk.END)
-        output_text.insert(tk.END, text)
+        output_text.insert(tk.END, current_text + text)
         output_text.config(state=tk.DISABLED)
-        update_word_count(text)
+        update_word_count(current_text + text)
     except sr.UnknownValueError:
         output_text.config(state=tk.NORMAL)
         output_text.delete(1.0, tk.END)
@@ -89,6 +90,11 @@ def generate_calligraphy_text():
             output_text.insert(tk.END, "Error in calligraphy generation")
             output_text.config(state=tk.DISABLED)
 
+def clear_text():
+    output_text.config(state=tk.NORMAL)
+    output_text.delete(1.0, tk.END)
+    output_text.config(state=tk.DISABLED)
+    word_count_label.config(text="Word Count: 0")
 
 def update_word_count(text):
     word_count = calculate_word_count(text)
@@ -99,12 +105,14 @@ window = tk.Tk()
 window.title("Speech to Text System")
 
 # Create and configure the text widget for output
-output_text = scrolledtext.ScrolledText(window, width=70, height=20)
+output_text = scrolledtext.ScrolledText(window, width=100, height=20)
 output_text.config(state=tk.DISABLED)
 
-# Create Record, Translate, Calligraphy, and Exit buttons
+# Create Record, Translate, Calligraphy, Clear, and Exit buttons
 record_button = tk.Button(window, text="Speak", command=lambda: record_audio(language_combobox.get()), bd=5)
 exit_button = tk.Button(window, text="Exit", command=window.destroy, bd=5)
+clear_button = tk.Button(window, text="Clear", command=clear_text, bd=5)
+
 language_combobox = ttk.Combobox(window, values=languages)
 language_combobox.set("Select Language")
 translate_button = tk.Button(window, text="Translate", command=translate_text, bd=5)
@@ -120,6 +128,7 @@ word_count_label = tk.Label(window, text="Word Count: 0")
 output_text.pack(pady=10)
 record_button.pack(side=tk.LEFT, padx=10)
 exit_button.pack(side=tk.LEFT, padx=10)
+clear_button.pack(side=tk.LEFT, padx=10)
 language_combobox.pack(side=tk.LEFT, padx=5)
 translate_button.pack(side=tk.LEFT, padx=5)
 calligraphy_style_combobox.pack(side=tk.LEFT, padx=5)
