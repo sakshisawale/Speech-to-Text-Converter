@@ -35,7 +35,6 @@ Tamil
 Telugu
 Korean
 French
-German
 Japanese
 
 ## Contributing
