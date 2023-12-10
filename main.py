@@ -24,7 +24,12 @@ def generate_calligraphy(text, style):
     else:
         messagebox.showinfo("Error", "Invalid calligraphy style selected.")
         return None
-        
+
+def capitalize_sentences(text):
+    sentences = text.split('. ')
+    capitalized_sentences = [sentence.capitalize() for sentence in sentences]
+    return '. '.join(capitalized_sentences)
+
 def calculate_word_count(text):
     words = text.split()
     return len(words)
@@ -37,12 +42,13 @@ def record_audio(language='en-US'):  # Default to English (United States)
 
     try:
         text = r.recognize_google(audio, language=language)
+        capitalized_text = capitalize_sentences(text)
         current_text = output_text.get("1.0", tk.END)
         output_text.config(state=tk.NORMAL)
         output_text.delete(1.0, tk.END)
-        output_text.insert(tk.END, current_text + text)
+        output_text.insert(tk.END, current_text + capitalized_text)
         output_text.config(state=tk.DISABLED)
-        update_word_count(current_text + text)
+        update_word_count(current_text + capitalized_text)
     except sr.UnknownValueError:
         output_text.config(state=tk.NORMAL)
         output_text.delete(1.0, tk.END)
