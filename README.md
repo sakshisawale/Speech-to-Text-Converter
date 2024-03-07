@@ -43,5 +43,5 @@ If you encounter any issues or have suggestions for improvements, please open an
 Feel free to customize this README file to better fit your project's specifics. Additionally, you may want to include a license file (`LICENSE`) in your repository and create a `requirements.txt` file with the dependencies if you don't have one already.
 
 
-
+©2023 Sakshi Sawale. All Rights Reserved.
 
