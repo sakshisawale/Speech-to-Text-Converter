@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 ## Usage
 Run the application by executing the speech_to_text_converter.py file.
-Click the "Speak" button to record speech and convert it to text.
+Click the "SPEAK" button to record speech and convert it to text.
 Select a target language from the dropdown and click "Translate" to translate the text.
 Choose a calligraphy style from the dropdown and click "Calligraphy" to apply the style to the text.
 The word count is displayed below the text area.
