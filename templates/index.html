@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STT — speak it, translate it, letter it</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="phone">
+
+    <header class="header">
+      <div class="logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="url(#g1)" stroke-width="1.6"/>
+          <path d="M13 20a7 7 0 0 0 14 0" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="20" y1="27" x2="20" y2="31" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="40" y2="40">
+              <stop offset="0%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#f0abfc"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1>STT</h1>
+      <p class="tagline">speak it, translate it, letter it</p>
+    </header>
+
+    <section class="mic-section">
+      <button id="micBtn" class="mic-btn" aria-label="Start listening">
+        <span class="ring ring-1"></span>
+        <span class="ring ring-2"></span>
+        <span class="ring ring-3"></span>
+        <svg viewBox="0 0 24 24" class="mic-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M5 11a7 7 0 0 0 14 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <p id="micStatus" class="mic-status">Tap to speak</p>
+
+      <select id="speechLang" class="pill-select">
+        <option value="en-US">English</option>
+        <option value="hi-IN">Hindi</option>
+        <option value="mr-IN">Marathi</option>
+        <option value="ta-IN">Tamil</option>
+        <option value="te-IN">Telugu</option>
+        <option value="ko-KR">Korean</option>
+        <option value="fr-FR">French</option>
+        <option value="ja-JP">Japanese</option>
+      </select>
+    </section>
+
+    <section class="page-card">
+      <div class="page-card-head">
+        <span class="eyebrow">Transcript</span>
+      </div>
+      <textarea id="outputText" class="output-text" placeholder="Your spoken words will appear here..."></textarea>
+      <p id="interim" class="interim"></p>
+      <span id="wordCount" class="word-count">0 words</span>
+    </section>
+
+    <section class="controls">
+      <select id="translateLang" class="pill-select full">
+        {% for lang in languages %}
+        <option value="{{ lang }}" {% if lang == "English" %}selected{% endif %}>Translate to {{ lang }}</option>
+        {% endfor %}
+      </select>
+      <button id="translateBtn" class="btn btn-violet">Translate</button>
+
+      <select id="calligraphyStyle" class="pill-select full">
+        <option value="Reverse">Reverse</option>
+        <option value="UpperCase">Upper Case</option>
+        <option value="LowerCase">Lower Case</option>
+        <option value="DoubleSpace">Double Space</option>
+        <option value="SwapCase">Swap Case</option>
+        <option value="Cursive">Cursive-ish style</option>
+      </select>
+      <button id="calligraphyBtn" class="btn btn-pink">Apply Calligraphy</button>
+
+      <button id="clearBtn" class="btn btn-ghost">Clear</button>
+    </section>
+
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
