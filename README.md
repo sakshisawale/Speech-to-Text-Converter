@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+# STT — speak it, translate it, letter it
+
+A dark, mobile-style web app for speech-to-text, translation, and calligraphy styling.
+=======
 STT — speak it, translate it, letter it
 
 Dark, centered, mobile-style web app for speech-to-text, translation, and
@@ -38,6 +43,7 @@ Replace the entire README.md with this:
 # STT — Speak It, Translate It, Letter It
 
 A web-based speech-to-text application that converts spoken words into text, supports translation, and provides calligraphy-style text formatting.
+>>>>>>> 5b7f7549a834ba755b9d052fe6601a3c9134190e
 
 ## Features
 
@@ -57,6 +63,30 @@ A web-based speech-to-text application that converts spoken words into text, sup
 - **Translation:** Python translation service
 - **Styling:** Custom CSS
 
+<<<<<<< HEAD
+## Run locally
+```bash
+pip install -r requirements.txt
+python app.py
+```
+Open http://127.0.0.1:5000 in Chrome or Edge.
+
+## Deploy to Vercel
+1. Push this project to a GitHub repository.
+2. Go to vercel.com → New Project → import the repository.
+3. Framework preset: Other. Vercel will detect `vercel.json` automatically.
+4. Click Deploy.
+
+No environment variables are required. The `vercel.json` and `api/index.py`
+files route requests to the Flask app as a serverless function.
+
+## Notes
+- Speech recognition requires Chrome or Edge and mic permission.
+- Deployed apps run over HTTPS, which the browser's speech API requires.
+
+## License
+All Rights Reserved.
+=======
 ## Project Structure
 
 ```text
@@ -362,3 +392,4 @@ Do not commit passwords, API keys, tokens, or other sensitive configuration to t
 License
 
 This project is intended for educational and development purposes.
+>>>>>>> 5b7f7549a834ba755b9d052fe6601a3c9134190e
